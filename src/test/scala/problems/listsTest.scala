@@ -197,6 +197,64 @@ class listsTest extends FunSpec with Matchers {
       }
     }
   }
+  describe("The P05"){
+    describe("using the built-in method"){
+      it("should return the reversed input list"){
+        val input = List(1,2,3,4)
+        val result = reverse(input)
+
+        result should be (List(4,3,2,1))
+      }
+      it("should return the same list if the input is an empty list"){
+        val input = List()
+        val result = reverse(input)
+
+        result should be (input)
+      }
+    }
+    describe("using functional approach"){
+      it("should return the reversed input list"){
+        val input = List(1,2,3,4)
+        val result = reverse_func(input)
+
+        result should be (List(4,3,2,1))
+      }
+      it("should return the same list if the input is an empty list"){
+        val input = List()
+        val result = reverse_func(input)
+
+        result should be (input)
+      }
+    }
+    describe("using a more pure functional approach"){
+      it("should return the reversed input list"){
+        val input = List(1,2,3,4)
+        val result = reverse_pure(input)
+
+        result should be (List(4,3,2,1))
+      }
+      it("should return the same list if the input is an empty list"){
+        val input = List()
+        val result = reverse_pure(input)
+
+        result should be (input)
+      }
+    }
+  }
+  describe("The P06"){
+    it("should return whether a list is palindrome :: true"){
+      val input = List(1,2,2,1)
+      val result = isPalindrome(input)
+
+      result should be (true)
+    }
+    it("should return whether a list is palindrome :: false"){
+      val input = List(1,2,2,2)
+      val result = isPalindrome(input)
+
+      result should be (false)
+    }
+  }
 
 
 }

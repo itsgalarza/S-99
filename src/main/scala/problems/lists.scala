@@ -109,11 +109,40 @@ object lists {
   }
 
 
+  //// P05: Reverse a list.
+  //     Example:
+  //     scala> reverse(List(1, 1, 2, 3, 5, 8))
+  //     res0: List[Int] = List(8, 5, 3, 2, 1, 1)
+  //
+  //// Built-in method
+  val reverse = (input_list:List[Any]) => input_list.reverse
 
-  //TO-DO
-  //P05: Reverse a list.
+  //// Functional approach
+  def reverse_func[A](input_list:List[A]): List[A] = {
+    @tailrec def _reverse_func[A](input_list:List[A], res: List[A] = Nil): List[A] = {
+      input_list match {
+        case Nil => res
+        case head :: tail => _reverse_func(tail, head :: res)
+      }
+    }
+    _reverse_func(input_list)
+  }
 
-  //TO-DO
-  //P06: Find out whether a list is a palindrome.
+  //// More pure functional approach
+  def reverse_pure[A](input_list:List[A]): List[A] = {
+    input_list.foldLeft(List[A]()){(a,h) => h :: a}
+  }
+
+  //// P06: Find out whether a list is a palindrome.
+  //
+  //     Example:
+  //     scala> isPalindrome(List(1, 2, 3, 2, 1))
+  //     res0: Boolean = true
+  ////
+  def isPalindrome(input_list:List[Int]): Boolean = {
+    input_list == input_list.foldLeft(List[Int]()){ (a,h) => h :: a}
+  }
+
+
 
 }
