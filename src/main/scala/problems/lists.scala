@@ -143,6 +143,52 @@ object lists {
     input_list == input_list.foldLeft(List[Int]()){ (a,h) => h :: a}
   }
 
+  //// P07: Flatten a nested list structure.
+  //
+  //     Example:
+  //     scala> flatten(List(List(1, 1), 2, List(3, List(5, 8))))
+  //     res0: List[Any] = List(1, 1, 2, 3, 5, 8)
+  ////
+  def listFlattened[A](input_list:List[A]): List[A] = {
+    input_list flatMap {
+      case input: List[A] => listFlattened(input)
+      case o => List(o)
+    }
+  }
+
+//// P08: Eliminate consecutive duplicates of list elements.
+//
+//     If a list contains repeated elements they should be replaced with a
+//     single copy of the element.  The order of the elements should not be
+//     changed.
+//
+//     Example:
+//     scala> compress(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
+//     res0: List[Symbol] = List('a, 'b, 'c, 'a, 'd, 'e)
+////
+
+//// P09: Pack consecutive duplicates of list elements into sublists.
+//
+//     If a list contains repeated elements they should be placed in separate
+//     sublists.
+//
+//     Example:
+//     scala> pack(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
+//     res0: List[List[Symbol]] = List(List('a, 'a, 'a, 'a), List('b), List('c, 'c), List('a, 'a), List('d), List('e, 'e, 'e, 'e))
+////
+
+//// P10: Run-length encoding of a list.
+//
+//     Use the result of problem P09 to implement the so-called run-length
+//     encoding data compression method.  Consecutive duplicates of elements are
+//     encoded as tuples (N, E) where N is the number of duplicates of the
+//     element E.
+//
+//     Example:
+//     scala> encode(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
+//     res0: List[(Int, Symbol)] = List((4,'a), (1,'b), (2,'c), (2,'a), (1,'d), (4,'e))
+////
+
 
 
 }

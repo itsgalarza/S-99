@@ -254,7 +254,41 @@ class listsTest extends FunSpec with Matchers {
 
       result should be (false)
     }
+    it("handles nulls"){
+      val input = List()
+      val result = isPalindrome(input)
+
+      result should be (true)
+    }
   }
+  describe("The P07"){
+    it("should return a flattened list :: Nested Lists"){
+      val input = List(1,List(2,List(8)))
+      val result = listFlattened(input)
+
+      result should be (List(1,2,8))
+    }
+    it("should return the same list if the element is just one"){
+      val input = List(1)
+      val result = listFlattened(input)
+
+      result should be (List(1))
+    }
+    it("should handle Nil inputs"){
+      val input = List()
+      val result = listFlattened(input)
+
+      result should be (List())
+    }
+  }
+  // describe("The P08"){
+  //   it("should return the unique values of the list"){
+  //     val input = List('a','b','b','b','c','c','x')
+  //     val result = compress(input)
+  //
+  //     result should be (List('a','b','c','x')
+  //   }
+  // }
 
 
 }
