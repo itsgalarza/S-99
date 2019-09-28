@@ -167,6 +167,25 @@ object lists {
 //     res0: List[Symbol] = List('a, 'b, 'c, 'a, 'd, 'e)
 ////
 
+// tail recursive
+def compress[A](input_list: List[A]): List[A] = {
+  @tailrec def _compress[A](input_list: List[A], res: List[A] = Nil): List[A] = {
+    input_list match {
+      case head :: tail => _compress(tail.dropWhile(_ == head), head :: res)
+      case Nil => res.reverse
+    }
+  }
+  _compress(input_list)
+}
+
+// fold approach
+def compressFold[A](input_list: List[A]): List[A] = {
+  input_list.foldRight(List[A]()){ (acc, i) =>
+    if (i.isEmpty || i.head != acc) acc :: i
+    else i
+  }
+}
+
 //// P09: Pack consecutive duplicates of list elements into sublists.
 //
 //     If a list contains repeated elements they should be placed in separate

@@ -281,14 +281,36 @@ class listsTest extends FunSpec with Matchers {
       result should be (List())
     }
   }
-  // describe("The P08"){
-  //   it("should return the unique values of the list"){
-  //     val input = List('a','b','b','b','c','c','x')
-  //     val result = compress(input)
-  //
-  //     result should be (List('a','b','c','x')
-  //   }
-  // }
+  describe("The P08"){
+    describe("with tail recursive approach"){
+      it("should return the unique values of the list"){
+        val input = List('a','b','b','b','c','c','x')
+        val result = compress(input)
+
+        result should be (List('a','b','c','x'))
+      }
+      it("should return same list if input is Nil"){
+        val input = List()
+        val result = compress(input)
+
+        result should be (List())
+      }
+    }
+    describe("with fold approach"){
+      it("should return the unique values of the list"){
+        val input = List('a','b','b','b','c','c','x')
+        val result = compressFold(input)
+
+        result should be (List('a','b','c','x'))
+      }
+      it("should return same list if input is Nil"){
+        val input = List()
+        val result = compressFold(input)
+
+        result should be (List())
+      }
+    }
+  }
 
 
 }
